@@ -1,0 +1,28 @@
+html{ 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+
+}
+
+.content{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result {
+    text-align: center;
+    margin-top: 2.5rem;
+    background-color: antiquewhite;
+    border-radius: 0.5cm;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: black;
+}
+.error-message {
+    text-align: center;
+    font-weight: 900;
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%
+}
