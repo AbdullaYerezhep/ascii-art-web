@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 
@@ -10,37 +9,50 @@ import (
 
 var templ *template.Template
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func IndexGet(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		ErrorPage(w, "Invalid URL", http.StatusNotFound)
+		return
+	}
+	if r.Method != http.MethodGet {
+		ErrorPage(w, "Invalid Post Request URL", http.StatusMethodNotAllowed)
 		return
 	}
 
 	templ = template.Must(template.ParseFiles("./ui/template/index.html"))
 
-	switch r.Method {
-	case http.MethodGet:
-		indexGet(w, r)
-	case http.MethodPost:
-		indexPost(w, r)
-	default:
-		ErrorPage(w, "Не правильный метод", http.StatusMethodNotAllowed)
-	}
+	templ.Execute(w, nil)
 }
 
-func indexPost(w http.ResponseWriter, r *http.Request) {
+func Asciiart(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/ascii-art" {
+		ErrorPage(w, "Invalid URL", http.StatusNotFound)
+		return
+	}
+
+	if r.Method != http.MethodPost {
+		ErrorPage(w, "Invalid Post Request", http.StatusMethodNotAllowed)
+		return
+	}
+
+	templ = template.Must(template.ParseFiles("./ui/template/index.html"))
+
+	if r.Form.Has("text") || r.Form.Has("style") {
+		ErrorPage(w, "Invalid Form Request", http.StatusInternalServerError)
+		return
+	}
+
 	text := r.FormValue("text")
 	style := r.FormValue("style")
 
+	if style != "standard" && style != "shadow" && style != "thinkertoy" {
+		ErrorPage(w, "Invalid Form Request", http.StatusInternalServerError)
+		return
+	}
 	res, err := asciiart.AsciiArt(text, style)
-	fmt.Println(res)
 	if err != nil {
 		ErrorPage(w, "Invalid template", http.StatusInternalServerError)
 		return
 	}
-	templ.Execute(w, res)
-}
-
-func indexGet(w http.ResponseWriter, r *http.Request) {
-	templ.Execute(w, nil)
+	templ.ExecuteTemplate(w, "index.html", res)
 }

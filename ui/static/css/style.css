@@ -2,11 +2,10 @@ html{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     height: 100%;
     width: 100%;
-
 }
 
 .content{ 
-    display: flex;
+    display: flex;  
     align-items: center;
     justify-content: center;
 }
@@ -22,7 +21,10 @@ html{
 .error-message {
     text-align: center;
     font-weight: 900;
-    position: fixed; /* or absolute */
-    top: 50%;
-    left: 50%
+    position:fixed; /* or absolute */
+    top: 25%;
+    left: 40%
+}
+h1{
+    font-size: 100px;
 }

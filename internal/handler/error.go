@@ -18,5 +18,6 @@ func ErrorPage(w http.ResponseWriter, messege string, code int) {
 		Code:    code,
 		Messege: messege,
 	}
+	w.WriteHeader(code)
 	templ.Execute(w, errorP)
 }
