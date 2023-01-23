@@ -58,4 +58,4 @@ Allowed packages
 
 Usage
 
-    Here's an example.
+    Open command line and go to project's folder path something like "student/ascii-art-web", then run command "go run cmd/main.go". Next, open your browser and go to "localhost:8080/". 

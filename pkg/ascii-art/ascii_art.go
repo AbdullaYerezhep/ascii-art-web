@@ -11,7 +11,8 @@ import (
 var hash = map[string]string{
 	"standard":"2d177cae56dba2451b87afc493b74e3e",
 	"shadow": "c6246987948ea88a66b07939c613f916",
-	"thinkertoy": "ed256fdc3317714d3a526aa56e39194d"}
+	"thinkertoy": "ed256fdc3317714d3a526aa56e39194d"
+}
 
 func AsciiArt(text, theme string) (string, error) {
 	x := ("./pkg/ascii-art/" + theme + ".txt")

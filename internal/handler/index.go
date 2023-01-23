@@ -38,7 +38,7 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 	templ = template.Must(template.ParseFiles("./ui/template/index.html"))
 
 	if r.Form.Has("text") || r.Form.Has("style") {
-		ErrorPage(w, "Invalid Form Request", http.StatusInternalServerError)
+		ErrorPage(w, "Invalid Form Request", http.StatusBadRequest)
 		return
 	}
 
@@ -46,12 +46,13 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 	style := r.FormValue("style")
 
 	if style != "standard" && style != "shadow" && style != "thinkertoy" {
-		ErrorPage(w, "Invalid Form Request", http.StatusInternalServerError)
+		ErrorPage(w, "Invalid Form Request", http.StatusBadRequest)
 		return
 	}
+
 	res, err := asciiart.AsciiArt(text, style)
 	if err != nil {
-		ErrorPage(w, "Invalid template", http.StatusInternalServerError)
+		ErrorPage(w, "Invalid template", http.StatusBadRequest)
 		return
 	}
 	templ.ExecuteTemplate(w, "index.html", res)
