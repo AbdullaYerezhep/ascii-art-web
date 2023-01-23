@@ -1,16 +1,16 @@
-# DESCRIPTION
+## DESCRIPTION
 
     Ascii-art-web consists in creating and running a server, in which it will be possible to use a\ web GUI (graphical user interface) to print graphical representation of given text.
 
-# AUTHORS
+## AUTHORS
 
     Creata21 and Bebek
 
-# USAGE
+## USAGE
 
     Open command line and go to project's folder path something like "student/ascii-art-web", \then run command "go run cmd/main.go". Next, open your browser and go to "localhost:8080/". 
 
-# iMPLEMENTATION
+## iMPLEMENTATION
 
 **Webpage can allow to use different style banners:**
 
