@@ -14,9 +14,9 @@ Open command line and go to project's folder path something like "student/ascii-
 
 **Webpage can allow to use different style banners:**
 
-*shadow*<br>
-*standard*<br>
-*thinkertoy*<br>
+- *shadow*<br>
+- *standard*<br>
+- *thinkertoy*<br>
 
 **Web-Page implements the following HTTP endpoints:**
 
