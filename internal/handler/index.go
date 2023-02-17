@@ -10,21 +10,33 @@ import (
 var templ *template.Template
 
 func IndexGet(w http.ResponseWriter, r *http.Request) {
+	templ, err := template.ParseFiles("./ui/template/index.html")
+	
+	if err != nil {
+		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		return
+	}
 	if r.URL.Path != "/" {
-		ErrorPage(w, "Invalid URL", http.StatusNotFound)
+		ErrorPage(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
 	if r.Method != http.MethodGet {
-		ErrorPage(w, "Invalid Post Request URL", http.StatusMethodNotAllowed)
+		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
 	}
 
-	templ = template.Must(template.ParseFiles("./ui/template/index.html"))
-
 	templ.Execute(w, nil)
+	
+
 }
 
 func Asciiart(w http.ResponseWriter, r *http.Request) {
+	templ, err := template.ParseFiles("./ui/template/index.html")
+	
+	if err != nil {
+		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		return
+	}
 	if r.URL.Path != "/ascii-art" {
 		ErrorPage(w, "Invalid URL", http.StatusNotFound)
 		return
@@ -35,7 +47,6 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templ = template.Must(template.ParseFiles("./ui/template/index.html"))
 
 	if r.Form.Has("text") || r.Form.Has("style") {
 		ErrorPage(w, "Invalid Form Request", http.StatusBadRequest)
@@ -55,5 +66,6 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 		ErrorPage(w, "Invalid template", http.StatusBadRequest)
 		return
 	}
-	templ.ExecuteTemplate(w, "index.html", res)
+
+	templ.Execute(w, res)
 }

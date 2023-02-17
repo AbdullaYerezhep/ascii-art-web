@@ -8,34 +8,39 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="content">
+    <div class="container">
+        <h1>ASCII-ART-WEB</h1>
         <form action="/ascii-art" method="post">
-            <h1>Ascii-Art-Web</h1>
-            <input type="text" name="text" required>
-            <ul>
-                <li>
-                    <label>Standard:    
-                        <input type="radio" name="style" value="standard" checked>
-                    </label>
-                </li>
-                <li>
-                     <label>Shadow:
-                        <input type="radio" name="style" value="shadow">
-                    </label>                
-                </li>
-                <li>
-                    <label>Thinkertoy:
-                        <input type="radio" name="style" value="thinkertoy">
-                    </label>
-                </li>
-            </ul>
-            <input type="submit">
+            <div class="row">
+                <div class="col-25">
+                    <label for="input">Your text: </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="text" required>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-25">
+                    <label for="style">Choose style: </label>
+                </div>
+                <div class="col-75">
+                    <select name="style" id="style">
+                        <option value="standard">Standard</option>
+                        <option value="shadow">Shadow</option>
+                        <option value="thinkertoy">Thinkertoy</option>
+                    </select>
+                </div>
+            </div>              
+            <div class="row">
+                <input type="submit">
+            </div>  
         </form>
+        <div class="result">
+            {{if .}}
+            <pre>{{.}}</pre>
+            {{end}}
+        </div>
     </div>
-    <div class="result">
-        {{if .}}
-        <pre>{{.}}</pre>
-        {{end}}
-    </div>
+ 
 </body>
 </html>
