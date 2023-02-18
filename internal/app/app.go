@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"net/http"
 	"project/internal/handler"
 )
@@ -13,6 +14,6 @@ func Run(port string) error {
 	mux.Handle("/static/", http.StripPrefix("/static", styles))
 	img := http.FileServer(http.Dir("./ui/assets"))
 	mux.Handle("/assets/", http.StripPrefix("/assets", img))
-
+	fmt.Println("Server is up and running!")
 	return http.ListenAndServe(port, mux)
 }

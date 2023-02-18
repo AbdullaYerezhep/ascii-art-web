@@ -1,14 +1,14 @@
 ## DESCRIPTION
 
-Ascii-art-web consists in creating and running a server, in which it will be possible to use a<br> web GUI (graphical user interface) to print graphical representation of given text.
+Ascii-art-web-stylize consists in creating and running a server, in which it will be possible to use a<br> user-friendly, responsive web GUI (graphical user interface) to print graphical representation of given text.
 
 ## AUTHORS
 
-Creata21 and Bebek
+Creata21
 
 ## USAGE
 
-Open command line and go to project's folder path something like "student/ascii-art-web", <br>then run command "go run cmd/main.go". Next, open your browser and go to "localhost:8080/". 
+Open command line and go to project's folder path something like "student/ascii-art-web-stylize", <br>then run command `go run cmd/main.go`. Next, open your browser and go to "localhost:8080/". 
 
 ## iMPLEMENTATION
 

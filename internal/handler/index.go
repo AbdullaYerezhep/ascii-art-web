@@ -13,7 +13,7 @@ func IndexGet(w http.ResponseWriter, r *http.Request) {
 	templ, err := template.ParseFiles("./ui/template/index.html")
 	
 	if err != nil {
-		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 	if r.URL.Path != "/" {
@@ -25,7 +25,10 @@ func IndexGet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templ.Execute(w, nil)
+	if err := templ.Execute(w, nil); err !=nil {
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 	
 
 }
@@ -34,7 +37,7 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 	templ, err := template.ParseFiles("./ui/template/index.html")
 	
 	if err != nil {
-		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 	if r.URL.Path != "/ascii-art" {
@@ -67,5 +70,8 @@ func Asciiart(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templ.Execute(w, res)
+	if err := templ.Execute(w, res); err !=nil {
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 }
