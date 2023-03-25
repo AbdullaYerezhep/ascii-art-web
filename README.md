@@ -1,6 +1,6 @@
 ## DESCRIPTION
 
-Ascii-art-web-stylize consists in creating and running a server, in which it will be possible to use a<br> user-friendly, responsive web GUI (graphical user interface) to print graphical representation of given text.
+Ascii-art-web consists in creating and running a server, in which it will be possible to use a<br> user-friendly, responsive web GUI (graphical user interface) to print graphical representation of given text.
 
 ## AUTHORS
 
